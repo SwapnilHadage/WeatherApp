@@ -122,9 +122,10 @@ const GetLocFromPincode = async (pin) => {
     }
   })
 
-  console.log(res?.data);
-
-  return res.data;
+  return {
+    lat: res?.data?.[0]?.lat,
+    lon: res?.data?.[0]?.lon,
+  };
 }
 
 const GetCityFromCoords = async (coords) => {

@@ -80,6 +80,7 @@ export const coordsFromPin = createAsyncThunk(
   async(pin, thunkAPI)=>{
     try {
       const location = await GetLocFromPincode(pin);
+      
       return location;
     } catch (error) {
       return thunkAPI.rejectWithValue({
@@ -241,7 +242,8 @@ const setup = createSlice({
         lat : action.payload.lat,
         lon : action.payload.lon,
       }
-      console.log('successfully fetched coords from pincode');
+      console.log('successfully fetched coords from pincode: ', action.payload.lat, ' ', action.payload.lon
+      );
     })
     .addCase(coordsFromPin.rejected, (state, action)=>{
       state.loading = false;
