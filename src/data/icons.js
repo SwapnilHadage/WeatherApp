@@ -1,0 +1,53 @@
+// weatherIcons.js
+
+import {
+  WiDaySunny,
+  WiDayCloudy,
+  WiDaySunnyOvercast,
+  WiCloud,
+  WiCloudy,
+  WiFog,
+  WiHumidity,
+  WiRaindrop,
+  WiRaindrops,
+  WiSprinkle,
+  WiRain,
+  WiRainMix,
+  WiShowers,
+  WiSnow,
+  WiSnowWind,
+  WiStrongWind,
+  WiWindy,
+  WiThunderstorm,
+  WiStormShowers,
+  WiThermometer,
+  WiDirectionUp,
+  WiNightClear,
+  WiTime3
+} from "react-icons/wi";
+
+export const WEATHER_ICONS = {
+  WiDaySunny,
+  WiDayCloudy,
+  WiDaySunnyOvercast,
+  WiCloud,
+  WiCloudy,
+  WiFog,
+  WiHumidity,
+  WiRaindrop,
+  WiRaindrops,
+  WiSprinkle,
+  WiRain,
+  WiRainMix,
+  WiShowers,
+  WiSnow,
+  WiSnowWind,
+  WiStrongWind,
+  WiWindy,
+  WiThunderstorm,
+  WiStormShowers,
+  WiThermometer,
+  WiDirectionUp,
+  WiNightClear,
+  WiTime3
+};

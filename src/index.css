@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+.weather-loading-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.weather-loading-shell::before {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 18% 25%, rgba(255, 255, 255, 0.78), transparent 24%),
+    radial-gradient(circle at 82% 18%, rgba(229, 231, 235, 0.82), transparent 28%),
+    radial-gradient(circle at 55% 85%, rgba(209, 213, 219, 0.55), transparent 30%);
+  animation: weather-drift 8s ease-in-out infinite alternate;
+}
+
+.weather-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.weather-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.78),
+    transparent
+  );
+  animation: weather-shimmer 1.45s ease-in-out infinite;
+  animation-delay: var(--delay, 0ms);
+}
+
+.weather-loader-card {
+  animation: weather-card-in 520ms ease both, weather-soft-pulse 2.4s ease-in-out infinite;
+  animation-delay: var(--delay, 0ms), calc(var(--delay, 0ms) + 520ms);
+}
+
+.weather-float {
+  animation: weather-float 3.2s ease-in-out infinite;
+  animation-delay: var(--delay, 0ms);
+}
+
+.weather-drop {
+  animation: weather-drop 1.4s ease-in-out infinite;
+}
+
+.weather-drop-late {
+  animation-delay: 150ms;
+}
+
+.weather-wind {
+  animation: weather-wind 2.8s ease-in-out infinite;
+}
+
+.weather-pulse,
+.weather-dot {
+  animation: weather-dot 1.2s ease-in-out infinite;
+  animation-delay: var(--delay, 0ms);
+}
+
+.weather-dot {
+  display: block;
+  height: 0.65rem;
+  width: 0.65rem;
+  border-radius: 9999px;
+  background: rgb(107, 114, 128);
+}
+
+@keyframes weather-shimmer {
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes weather-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes weather-soft-pulse {
+  0%,
+  100% {
+    box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+  }
+  50% {
+    box-shadow: 0 12px 28px rgba(17, 24, 39, 0.08);
+  }
+}
+
+@keyframes weather-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -7px, 0);
+  }
+}
+
+@keyframes weather-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-7px);
+  }
+  45% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+}
+
+@keyframes weather-wind {
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translateX(8px);
+    opacity: 1;
+  }
+}
+
+@keyframes weather-dot {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: scale(0.82);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes weather-drift {
+  from {
+    transform: translate3d(-1%, -1%, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(1%, 1%, 0) rotate(3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .weather-loading-shell::before,
+  .weather-shimmer::after,
+  .weather-loader-card,
+  .weather-float,
+  .weather-drop,
+  .weather-wind,
+  .weather-pulse,
+  .weather-dot {
+    animation: none;
+  }
+}
