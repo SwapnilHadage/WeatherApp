@@ -12,14 +12,9 @@ function Header({openSidebar}) {
   const [isMd, setIsMd] =useState(false);
   useEffect(()=>{  //IsMD
     const mediaQuery = window.matchMedia("(min-width: 769px)");
-    console.log(isMd);
+
     const handleChange = (event)=>{
-      const isTrue = Boolean(event.matches);
-      setIsMd(isTrue);
-      console.log(" match: ", isTrue, event.matches, isMd);
-      
-      console.log(isMd);
-      
+      setIsMd(event.matches);
     };
 
     setIsMd(mediaQuery.matches);
@@ -28,12 +23,8 @@ function Header({openSidebar}) {
     return ()=>{
       mediaQuery.removeEventListener('change', handleChange);
     };
-  },[]);
 
-  useEffect(()=>{
-    console.log(isMd);
-    
-  }, [isMd]);
+  },[]);
 
   let oldLocation = null;
   oldLocation = useSelector(state => state.setup.coords) || localStorage.getItem('coords');
@@ -66,13 +57,7 @@ function Header({openSidebar}) {
     };
 
   useEffect(()=>{
-    console.log('coords: ', coords);
-    // const fetchAPI=async()=> {
-    //   await dispatch(currentWeather(coords)).unwrap()
-    // }
-
     if (coords != null) {
-      // fetchAPI();
       localStorage.setItem('coords', coords);
     }
     
@@ -85,13 +70,8 @@ function Header({openSidebar}) {
     try {
       if(Number(val.trim())) {
         const coords = await dispatch(coordsFromPin(Number(val.trim()))).unwrap();
-        //await dispatch(currentWeather(coords));
-        console.log('pin', coords);
-        
       }else{
         const coords = await dispatch(coordsFromCity(val.trim())).unwrap();
-        //await dispatch(currentWeather(coords));
-        console.log('city', coords);
       }
     } catch (error) {
       console.error("Error fetching coordinates:", error.message || error);
