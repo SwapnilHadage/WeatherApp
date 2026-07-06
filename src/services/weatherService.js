@@ -148,7 +148,7 @@ const GetCityFromCoords = async (coords) => {
 }
 
 const getWeatherAnalysis = async (data) =>{
-  const res = await axios.get('api/weatherAnalysisAi',{
+  const res = await axios.post('api/weatherAnalysisAi',{
     params: {
       query: data,
     }

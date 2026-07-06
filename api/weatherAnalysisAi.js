@@ -1,4 +1,4 @@
-import { GoogleGenAi } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 
 export default async function handler(req, res){
   if(req.method !== "POST"){
