@@ -15,7 +15,7 @@ export const currentWeather = createAsyncThunk(
       
     } catch (error) {
       return thunkAPI.rejectWithValue({
-        message:  error.response?.data?.message || error.message || "Something went wrong",
+        message:  error?.response?.data?.message || error.message || "Something went wrong",
         code: error.code || null,
         status: error.response?.status || null,
         statusText: error.response?.statusText || null,

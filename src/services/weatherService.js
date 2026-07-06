@@ -1,4 +1,4 @@
-import { current } from "@reduxjs/toolkit";
+import axios from "axios";
 import { weatherAxios, getCoordsAxios1, getCoordsAxios2, getCityFromCoords } from "../API/axios";
 
 const current_variables = ['temperature_2m',
@@ -91,6 +91,7 @@ const WeeklyWeatherFetch = async (coords) => {             //forecast per day of
       longitude: coords.lon,
       daily: week_variables.join(','),
       forecast_days: 7,
+      timezone: 'auto',
     }
   })
   return res.data;
@@ -122,10 +123,15 @@ const GetLocFromPincode = async (pin) => {
     }
   })
 
-  return {
-    lat: res?.data?.[0]?.lat,
-    lon: res?.data?.[0]?.lon,
-  };
+  console.log(res?.data);
+
+  if (res?.data && res.data.length > 0) {
+    return {
+      lat: Number(res.data[0].lat),
+      lon: Number(res.data[0].lon),
+    };
+  }
+  throw new Error("No location found for the given pincode.");
 }
 
 const GetCityFromCoords = async (coords) => {
@@ -141,6 +147,18 @@ const GetCityFromCoords = async (coords) => {
   return res;
 }
 
+const getWeatherAnalysis = async (data) =>{
+  const res = await axios.get('api/weatherAnalysisAi',{
+    params: {
+      query: data,
+    }
+  });
+
+  console.log(res.data);
+  return res?.data;
+  
+}
+
 export {
   CurrentWeatherFetch,
   DailyWeatherFetch,
@@ -148,5 +166,7 @@ export {
   GetLocFromCity,
   GetLocFromPincode,
   GetCityFromCoords,
+
+  getWeatherAnalysis,
 
 }

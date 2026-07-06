@@ -11,7 +11,7 @@ function ErrorPage({error}) {
   const msg = getErrorMessage(error);
 
   return (
-    <div className='w-screen h-scrren p-5 bg-gray-500 z-60'>
+    <div className='w-full h-full p-5 bg-gray-500 z-60'>
       <div className=" size-full bg-red-200  ">
         {msg}
       </div>

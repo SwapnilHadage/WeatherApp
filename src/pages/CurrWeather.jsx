@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { CurrWeatherHero, CurrWeatherSideHero } from '../components';
+import { CurrWeatherHero, CurrWeatherSideHero, AiAnalysis } from '../components';
 import { currentWeather } from '../redux/slices/setupSlice';
 
 function CurrWeather() {
@@ -15,17 +15,21 @@ function CurrWeather() {
   },[coords, dispatch]);
 
   return (
-    <div className='size-full relative flex flex-col justify-center pb-10 gap-5'>
-      <CurrWeatherHero
+    <div className='size-full relative flex flex-col justify-evenly items-center
+    '>
+      <div className='flex justify-center items-center w-full h-full md:justify-start p-4'>
+        <CurrWeatherHero
         data = {currentWeatherData}
         loading = {loading}
         error = {error}
         hasCoords = {Boolean(coords)}/>
+      </div>
       <CurrWeatherSideHero
         data = {currentWeatherData}
         loading = {loading}
         error = {error}
         hasCoords = {Boolean(coords)}/>
+        <AiAnalysis data={currentWeatherData}/>
     </div>
   )
 }

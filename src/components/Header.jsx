@@ -4,11 +4,36 @@ import { changeCoords, changeLanguage, changeMode, changeTheme, coordsFromCity, 
 import { FaLocationDot } from "react-icons/fa6";
 
 
-function Header() {
-  const {language, mode, theme, currentWeatherData, coords}= useSelector(state=>state.setup);
+function Header({openSidebar}) {
+  const { theme, currentWeatherData, coords}= useSelector(state=>state.setup);
 
   //0->light, 1-> dark
   const [isInputEmpty, setIsInputEmpty] = useState(true);
+  const [isMd, setIsMd] =useState(false);
+  useEffect(()=>{  //IsMD
+    const mediaQuery = window.matchMedia("(min-width: 769px)");
+    console.log(isMd);
+    const handleChange = (event)=>{
+      const isTrue = Boolean(event.matches);
+      setIsMd(isTrue);
+      console.log(" match: ", isTrue, event.matches, isMd);
+      
+      console.log(isMd);
+      
+    };
+
+    setIsMd(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleChange);
+
+    return ()=>{
+      mediaQuery.removeEventListener('change', handleChange);
+    };
+  },[]);
+
+  useEffect(()=>{
+    console.log(isMd);
+    
+  }, [isMd]);
 
   let oldLocation = null;
   oldLocation = useSelector(state => state.setup.coords) || localStorage.getItem('coords');
@@ -53,19 +78,6 @@ function Header() {
     
   },[coords, dispatch, ])
 
-
-  const languages = ['English', 'Hindi', 'Marathi',];
-  const modes = ['student', 'traveler', 'Professional',];
-
-  const handleModeChange = (val)=>{
-    dispatch(changeMode(val));
-  }
-  const handleLanguageChange = (val)=>{
-    dispatch(changeLanguage(val.trim()));
-  }
-  const handleThemeChange = (val)=>{
-    dispatch(changeTheme());
-  }
   const handleLocation = async (val)=>{
     if(val.toString().length>0) setIsInputEmpty(false);
     setLocation(val.trim());
@@ -96,23 +108,18 @@ function Header() {
       setIsInputEmpty(true);
     }
   }
+  
 
   return (
     <header className='w-full max-h-max bg-gray-200 flex justify-evenly items-center flex-row px-2 py-4' >
-      {/*language*/}
-      <div className=' border-2 border-gray-300 p-2'>
-        <select name="language" id="" className='outline-none'
-        onChange={(e)=> {
-          handleLanguageChange(e.target.value)
-          }}>
-        { languages.map((lang, i) => {
-          return(
-            <option value={lang} key={i}>
-              {lang}
-            </option>
-          )
-          })}
-        </select>
+      {/*Name and LOGO*/}
+      <div>
+        VYOM
+      </div>
+
+      <div
+      onClick={openSidebar}>
+        sidebar
       </div>
 
       {/*location*/}
@@ -143,34 +150,19 @@ function Header() {
       </div>
 
       {/*Current Location btn*/}
-      <div className='border-2 border-gray-300 p-2 overflow-hidden min-w-[20%] flex items-center gap-1'>
+      <div className={`w-fit shrink-0 border-2 border-gray-300 p-2 overflow-hidden flex items-center
+        `}
+        onClick={getCurrentLocation}>
         <FaLocationDot />
-        <button
-        className=''
-        onClick={getCurrentLocation}
-        > Use Current Location</button>
+        {
+          isMd &&
+          <button
+          className=''
+          >
+            Use Current Location
+          </button>
+        }
       </div>
-
-      {/*modes*/}
-      <div className=' w-fit shrink-0 border-2 border-gray-300 p-2 overflow-hidden'>
-        <select name="modes" id="" className='border-none outline-none w-auto'
-        onChange={(e)=>{
-          handleModeChange(e.target.value)
-        }}>
-          {modes.map((mode,i) => {
-            return(
-              <option value={mode.toUpperCase()} key={i}>
-                {mode}
-              </option>
-            )
-          })}
-        </select>
-      </div>
-    
-      {/* theme
-      <div className='w-20 h-auto border-2 border-gray-300 p-2'>
-        Dark/Light
-      </div> */}
     </header>
   )
 }

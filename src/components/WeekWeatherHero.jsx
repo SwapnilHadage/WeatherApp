@@ -24,7 +24,7 @@ function WeekWeatherHero({ data, loading, error, hasCoords }){
     </div>
   }
   return (
-    <div className="size-full flex bg-white items-center justify-center border-1 border-gray-200 p-[2%] ">
+    <div className="size-full flex bg-white items-center justify-center p-[2%] ">
       <div className="flex flex-row flex-nowrap w-full rounded-xl gap-2">
         {
         data.daily.weather_code.slice(0,8).map((code, i)=>{

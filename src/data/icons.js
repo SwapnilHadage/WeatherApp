@@ -25,6 +25,7 @@ import {
   WiNightClear,
   WiTime3
 } from "react-icons/wi";
+import { AiOutlineRollback } from "react-icons/ai";
 
 export const WEATHER_ICONS = {
   WiDaySunny,
@@ -49,5 +50,12 @@ export const WEATHER_ICONS = {
   WiThermometer,
   WiDirectionUp,
   WiNightClear,
-  WiTime3
+  WiTime3,
+
+
+};
+
+export {
+  AiOutlineRollback,
+
 };

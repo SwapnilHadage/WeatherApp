@@ -22,7 +22,7 @@ function TodayWeatherHero({data, error, loading, hasCoords}) {
   }
 
   return (
-    <div className="min-h-full flex flex-row flex-wrap size-full justify-center content-start items-start rounded-xl gap-4 p-3 min-w-screen ">
+    <div className="min-h-full flex flex-row flex-wrap size-full justify-center content-start items-start rounded-xl gap-4 p-3 min-w-full">
         {
           data?.hourly?.weather_code.map((code, i)=>{
             const weatherInfo = getWeatherInfo(code);

@@ -5,6 +5,13 @@ import { CurrentMetricsLoading } from './WeatherLoading';
 
 function CurrWeatherSideHero({data, loading, error, hasCoords}) {
 
+  const handleScroll = (e) => {
+  e.currentTarget.scrollBy({
+    left: e.deltaY,
+    behavior: "smooth",
+  });
+};
+
   if(!hasCoords){
     return(
     <div className='w-150 h-100 rounded-2xl bg-gray-100 flex m-3'>
@@ -25,7 +32,10 @@ function CurrWeatherSideHero({data, loading, error, hasCoords}) {
     )
   }
   return (
-    <div className='w-auto h-20 bg-gray-300 m-3 flex flex-wrap justify-evenly'>
+    <div 
+    onWheel={handleScroll}
+    className='h-20 bg-gray-300 m-3 flex flex-nowrap gap-1 overflow-x-auto [scrollbar-width:none]
+    [&::-webkit-scrollbar]:hidden'>
       {
         Object.entries(WEATHER_METRICS.current).map(([key, value])=>{
           const variable = data?.current?.[key]
@@ -38,7 +48,7 @@ function CurrWeatherSideHero({data, loading, error, hasCoords}) {
           }
           
           return(
-            <div className='w-auto h-full flex flex-col p-2' key={key}>
+            <div className='w-auto h-full min-w-32 shrink-0 snap-start flex flex-col p-2' key={key}>
               <div className='flex '>
                 <Icon size={30} className=''/>
                 <p>

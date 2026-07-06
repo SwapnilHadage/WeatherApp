@@ -5,5 +5,7 @@ export function getWeatherInfo(code) {
     description : "Unknown",
     icon: "WiDaySunny",
     label : "Unknown",
+    category: null,
+    background: null,
   };
 }

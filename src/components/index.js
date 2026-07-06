@@ -6,6 +6,8 @@ import TodayWeatherHero from "./TodayWeatherHero";
 import WeekWeatherHero from "./WeekWeatherHero";
 import Header2 from "./Header2";
 import TodayWeatherMiniCard from "./TodayWeatherMiniCard";
+import AiAnalysis from "./AiAnalysis";
+import Sidebar from "./Sidebar";
 
 
 export {
@@ -16,7 +18,9 @@ export {
   TodayWeatherHero,
   Header2,
   WeekWeatherHero,
-  TodayWeatherMiniCard
+  TodayWeatherMiniCard,
+  AiAnalysis,
+  Sidebar,
 
   
 }

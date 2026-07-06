@@ -17,7 +17,7 @@ function Navbar() {
 
   return (
 
-    <div className='w-full h-[8%] backfrop-opacity-0 flex justify-center items-center border-none bg-tranparent outline-none z-50'>
+    <div className='w-full h-[8%] backfrop-opacity-0 flex justify-center items-center border-none bg-tranparent outline-none z-10'>
       <nav className='bg-white w-5/6  h-full flex justify-evenly'>
       {
         navElements.map(element=>
