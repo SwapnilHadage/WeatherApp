@@ -30,7 +30,7 @@ function CurrWeather() {
         error = {error}
         hasCoords = {Boolean(coords)}/>
       {
-        data &&
+        currentWeatherData &&
         <AiAnalysis data={currentWeatherData}/>
       }
     </div>
