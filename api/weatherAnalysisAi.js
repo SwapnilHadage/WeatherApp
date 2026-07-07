@@ -1,12 +1,16 @@
 import { GoogleGenAI } from "@google/genai";
 
 export default async function handler(req, res){
+  const { weatherData } = req?.body;
+  if( !weatherData ){
+    return res.status(405).json({error: "No Weather data for Analysis"});
+  }
   if(req.method !== "POST"){
     return res.status(405).json({error: "Method not allowed"});
   }
   try{
-    const { weatherData } = req.body;
-    const ai = new GoogleGenAi({
+    
+    const ai = new GoogleGenAI({
       apiKey: process.env.GEMINI_API_KEY,
     });
 
