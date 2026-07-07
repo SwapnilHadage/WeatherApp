@@ -42,7 +42,7 @@ export default async function handler(req, res){
     console.error("Gemini error:", error);
 
     return res.status(500).json({
-      error: "AI request failed",
+      error: error,
     });
   }
   
