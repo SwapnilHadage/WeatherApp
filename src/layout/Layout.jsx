@@ -106,7 +106,7 @@ useEffect(() => {
   };
   
   return (
-    <div className={`w-screen h-screen flex flex-col bg-[url('../../public/weatherPics/bg3.png')] bg-cover bg-center bg-no-repeat text-text overflow-hidden  relative
+    <div className={`w-screen h-screen flex flex-col bg-[url('/weatherPics/bg3.png')] bg-cover bg-center bg-no-repeat text-text overflow-hidden  relative
     ${theme==='light' ? 'dark' : 'light'}`}>
       <Header
       openSidebar={openSidebar}/>
