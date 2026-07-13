@@ -1,0 +1,30 @@
+.weather-icon{
+    display:block;
+    user-select:none;
+    object-fit:contain;
+    pointer-events:none;
+    will-change:transform;
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
+
+.weather-icon:hover{
+    transform:scale(1.04);
+}
+
+.weather-icon.loading{
+    opacity:.4;
+}
+
+.weather-icon.small{
+    width:32px;
+}
+
+.weather-icon.medium{
+    width:64px;
+}
+
+.weather-icon.large{
+    width:128px;
+}

@@ -1,5 +1,6 @@
 import { getWeatherInfo } from "../data/getWeatherFromCode"
 import { WEATHER_ICONS } from "../data/icons";
+import { getWeatherIconKey } from "../utils/getWeatherIconKey";
 import MiniCard from "./MiniCard";
 import { WeekWeatherLoading } from "./WeatherLoading";
 
@@ -24,16 +25,14 @@ function WeekWeatherHero({ data, loading, error, hasCoords }){
     </div>
   }
   return (
-    <div className="size-full flex bg-white items-center justify-center p-[2%] ">
-      <div className="flex flex-row flex-nowrap w-full rounded-xl gap-2">
+    <div className="size-full flex items-center justify-center p-2 pb-4 bg-transparent ">
+      <div className="w-full rounded-xl gap-2 grid grid-cols-2 items-stretch bg-white/0
+      md:grid-cols-7 ">
         {
         data.daily.weather_code.slice(0,8).map((code, i)=>{
             const weatherInfo = getWeatherInfo(code);
-            const Icon = WEATHER_ICONS[weatherInfo.icon];
-            
             return(
               <MiniCard
-                Icon = {Icon}
                 data = {data}
                 i ={i}
                 key={i}

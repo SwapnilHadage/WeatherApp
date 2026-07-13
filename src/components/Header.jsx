@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { changeCoords, changeLanguage, changeMode, changeTheme, coordsFromCity, coordsFromPin, currentWeather } from '../redux/slices/setupSlice';
-import { FaLocationDot } from "react-icons/fa6";
-
+import { GiHamburgerMenu, FaLocationDot, MdClear, } from '../data/icons'
 
 function Header({openSidebar}) {
   const { theme, currentWeatherData, coords}= useSelector(state=>state.setup);
@@ -91,57 +90,69 @@ function Header({openSidebar}) {
   
 
   return (
-    <header className='w-full max-h-max bg-gray-200 flex justify-evenly items-center flex-row px-2 py-4' >
-      {/*Name and LOGO*/}
-      <div>
-        VYOM
+    <header className='w-dvw max-h-max flex flex-col justify-evenly items-center gap-1' >
+      <div className='w-full flex justify-between p-3 
+      bg-gradient-to-b from-[#2363BE ] to-white/0'>
+        {/*Name and LOGO*/}
+        <div className='text-white'>
+          VYOM
+        </div>
+
+        {/* SideBar */}
+        <div
+        className='flex justify-center items-center text-white'
+        onClick={openSidebar}>
+          <GiHamburgerMenu
+          size={25}/>
+        </div>
       </div>
 
-      <div
-      onClick={openSidebar}>
-        sidebar
-      </div>
-
-      {/*location*/}
-      <div className='w-full flex-1 min-w-0 max-w-[50%] p-0 border-2 border-gray-300 bg-white flex justify-end overflow-hidden flex-nowrap'>
-        <input type="text"
-        placeholder='Enter Location or Pincode'
-        value={location===0? '' : location}
-        className='outline-none m-0
-          p-2 flex-1 bg-white'
-        onKeyDown={
-          (e)=>{
-            if(e.key === "Enter") {
-              handleLocation(e.target.value);
+      <div className='w-full h-auto flex items-center justify-between gap-2 px-2 bg-transparent'>
+        {/*location*/}
+        <div className='w-full h-10 min-w-0 h-10 flex justify-end items-center overflow-hidden flex-nowrap bg-white text-black rounded-2xl'>
+          <input type="text"
+          placeholder='Enter Location or Pincode'
+          value={location===0? '' : location}
+          className='outline-none m-0
+            h-full w-full px-4 overflow-hidden
+            '
+          onKeyDown={
+            (e)=>{
+              if(e.key === "Enter") {
+                handleLocation(e.target.value);
+              }
             }
           }
-        }
-        onChange={
-          (e)=>{
-            trackInput(e.target.value)
-            setLocation(e.target.value)
-        }}
-        />
-        {!isInputEmpty &&
-          <button onClick={clearSearch}
-        className='shrink-0 w-10 bg-gray-200'
-        >x</button>
-        }
-      </div>
-
-      {/*Current Location btn*/}
-      <div className={`w-fit shrink-0 border-2 border-gray-300 p-2 overflow-hidden flex items-center
-        `}
-        onClick={getCurrentLocation}>
-        <FaLocationDot />
-        {
-          isMd &&
-          <button
-          className=''
+          onChange={
+            (e)=>{
+              trackInput(e.target.value)
+              setLocation(e.target.value)
+          }}
+          />
+          {!isInputEmpty &&
+            <button onClick={clearSearch}
+          className='shrink-0 w-8 h-full flex justify-center items-center'
           >
-            Use Current Location
+            <MdClear size={25}
+            className='bg-primary'/>
           </button>
-        }
+          }
+        </div>
+
+        {/*Current Location btn*/}
+        <div className={`w-fit h-10 bg-primary text-white hover:bg-primary-hover transition-all duration-200 cursor-pointer shrink-0 border-1 border-gray-300 p-2 overflow-hidden flex items-center rounded-2xl
+          `}
+          onClick={getCurrentLocation}>
+          <FaLocationDot />
+          {
+            isMd &&
+            <button
+            className=''
+            >
+              Use Current Location
+            </button>
+          }
+        </div>
       </div>
     </header>
   )

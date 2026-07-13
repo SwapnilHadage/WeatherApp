@@ -18,10 +18,8 @@ function WeekWeather() {
 
 
   return (
-    <div className="w-full h-full min-h-0 bg-white flex flex-col overflow-hidden border-">
-      <Header2 
-            msg={"Week's Forecast"}
-      />
+    <div className="w-full h-full min-h-0 flex flex-col overflow-hidden mb-14 md:mb-7">
+      
       <div className="flex-1 min-h-0 border-none outline-none">
       <WeekWeatherHero
             data = {weekWeatherData}

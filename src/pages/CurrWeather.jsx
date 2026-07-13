@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CurrWeatherHero, CurrWeatherSideHero, AiAnalysis } from '../components';
-import { currentWeather } from '../redux/slices/setupSlice';
+import { currentWeather, weekWeather, todayWeather } from '../redux/slices/setupSlice';
 
 function CurrWeather() {
 
@@ -11,27 +11,77 @@ function CurrWeather() {
   useEffect(()=>{
     if(coords){
       dispatch(currentWeather(coords));
+      dispatch(todayWeather(coords));
+      dispatch(weekWeather(coords));
     }
   },[coords, dispatch]);
 
+  const [isMd, setIsMd] =useState(false);
+    useEffect(()=>{  //IsMD
+      const mediaQuery = window.matchMedia("(min-width: 769px)");
+  
+      const handleChange = (event)=>{
+        setIsMd(event.matches);
+      };
+  
+      setIsMd(mediaQuery.matches);
+      console.log(mediaQuery.matches);
+      
+      mediaQuery.addEventListener('change', handleChange);
+  
+      return ()=>{
+        mediaQuery.removeEventListener('change', handleChange);
+      };
+    }, []);
+
   return (
-    <div className='size-full relative flex flex-col justify-evenly items-center
-    '>
-      <div className='flex justify-center items-center w-full h-full md:justify-start p-4'>
+    <div className={`size-full relative flex ${isMd ? 'flex-col' : 'flex-col'}  shrink-0 p-1 py-2 md:items-start 
+    `}>
+      {
+        isMd &&
+        currentWeatherData &&
+        <>
+          <div
+          className='flex-1 relative flex shrink-0 gap-3
+          md:items-start'>
+            <CurrWeatherHero
+              data = {currentWeatherData}
+              loading = {loading}
+              error = {error}
+              hasCoords = {Boolean(coords)}/>
+
+            <AiAnalysis />
+          </div>
+          <div
+          className=' '>
+            <CurrWeatherSideHero
+              data = {currentWeatherData}
+              loading = {loading}
+              error = {error}
+              hasCoords = {Boolean(coords)}/>
+          </div>
+        </>
+
+
+      }
+      { !isMd &&
+        currentWeatherData &&
+
+        <>
         <CurrWeatherHero
         data = {currentWeatherData}
         loading = {loading}
         error = {error}
         hasCoords = {Boolean(coords)}/>
-      </div>
-      <CurrWeatherSideHero
+
+        <CurrWeatherSideHero
         data = {currentWeatherData}
         loading = {loading}
         error = {error}
         hasCoords = {Boolean(coords)}/>
-      {
-        currentWeatherData &&
+
         <AiAnalysis data={currentWeatherData}/>
+        </>
       }
     </div>
   )

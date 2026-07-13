@@ -2,7 +2,7 @@ export const WEATHER_CODES = {
   0: {
     label: "Clear Sky",
     description: "Sunny and cloudless conditions.",
-    icon: "WiDaySunny",
+    icon: "clear",
     category: "clear",
     background: "Clear sunny morning.jpg"
   },
@@ -10,7 +10,7 @@ export const WEATHER_CODES = {
   1: {
     label: "Mainly Clear",
     description: "Mostly sunny with a few clouds.",
-    icon: "WiDaySunnyOvercast",
+    icon: "clear",
     category: "clear",
     background: "Clear sunny morning.jpg"
   },
@@ -18,7 +18,7 @@ export const WEATHER_CODES = {
   2: {
     label: "Partly Cloudy",
     description: "A mix of sunshine and clouds.",
-    icon: "WiDayCloudy",
+    icon: "partly_cloudy",
     category: "clouds",
     background: "Few scattered clouds.jpg"
   },
@@ -26,7 +26,7 @@ export const WEATHER_CODES = {
   3: {
     label: "Overcast",
     description: "Cloud-covered sky with little or no sunshine.",
-    icon: "WiCloudy",
+    icon: "cloudy",
     category: "clouds",
     background: "Overcast sky.jpg"
   },
@@ -34,7 +34,7 @@ export const WEATHER_CODES = {
   45: {
     label: "Fog",
     description: "Reduced visibility due to fog.",
-    icon: "WiFog",
+    icon: "fog",
     category: "fog",
     background: "Dense fog.jpg"
   },
@@ -42,7 +42,7 @@ export const WEATHER_CODES = {
   48: {
     label: "Rime Fog",
     description: "Fog with ice crystal deposits.",
-    icon: "WiFog",
+    icon: "fog",
     category: "fog",
     background: "Misty morning.jpg"
   },
@@ -50,7 +50,7 @@ export const WEATHER_CODES = {
   51: {
     label: "Light Drizzle",
     description: "Light intermittent drizzle.",
-    icon: "WiSprinkle",
+    icon: "drizzle",
     category: "drizzle",
     background: "Light rain.jpg"
   },
@@ -58,7 +58,7 @@ export const WEATHER_CODES = {
   53: {
     label: "Moderate Drizzle",
     description: "Moderate continuous drizzle.",
-    icon: "WiSprinkle",
+    icon: "drizzle",
     category: "drizzle",
     background: "Light rain.jpg"
   },
@@ -66,7 +66,7 @@ export const WEATHER_CODES = {
   55: {
     label: "Dense Drizzle",
     description: "Heavy and persistent drizzle.",
-    icon: "WiSprinkle",
+    icon: "drizzle",
     category: "drizzle",
     background: "Heavy rain.jpg"
   },
@@ -74,7 +74,7 @@ export const WEATHER_CODES = {
   56: {
     label: "Light Freezing Drizzle",
     description: "Light drizzle freezing on contact.",
-    icon: "WiRainMix",
+    icon: "sleet",
     category: "freezing",
     background: "Heavy snowfall.jpg"
   },
@@ -82,7 +82,7 @@ export const WEATHER_CODES = {
   57: {
     label: "Dense Freezing Drizzle",
     description: "Heavy freezing drizzle.",
-    icon: "WiRainMix",
+    icon: "sleet",
     category: "freezing",
     background: "Heavy snowfall.jpg"
   },
@@ -90,7 +90,7 @@ export const WEATHER_CODES = {
   61: {
     label: "Light Rain",
     description: "Light rainfall.",
-    icon: "WiRain",
+    icon: "rain",
     category: "rain",
     background: "Light rain.jpg"
   },
@@ -98,7 +98,7 @@ export const WEATHER_CODES = {
   63: {
     label: "Moderate Rain",
     description: "Steady rainfall.",
-    icon: "WiRain",
+    icon: "rain",
     category: "rain",
     background: "Light rain.jpg"
   },
@@ -106,7 +106,7 @@ export const WEATHER_CODES = {
   65: {
     label: "Heavy Rain",
     description: "Intense rainfall.",
-    icon: "WiRain",
+    icon: "heavy-rain",
     category: "rain",
     background: "Heavy rain.jpg"
   },
@@ -114,7 +114,7 @@ export const WEATHER_CODES = {
   66: {
     label: "Light Freezing Rain",
     description: "Light rain freezing on contact.",
-    icon: "WiRainMix",
+    icon: "sleet",
     category: "freezing",
     background: "Heavy snowfall.jpg"
   },
@@ -122,7 +122,7 @@ export const WEATHER_CODES = {
   67: {
     label: "Heavy Freezing Rain",
     description: "Heavy freezing rain.",
-    icon: "WiRainMix",
+    icon: "sleet",
     category: "freezing",
     background: "Heavy snowfall.jpg"
   },
@@ -130,7 +130,7 @@ export const WEATHER_CODES = {
   71: {
     label: "Light Snow",
     description: "Light snowfall.",
-    icon: "WiSnow",
+    icon: "snow",
     category: "snow",
     background: "Light snow.jpg"
   },
@@ -138,7 +138,7 @@ export const WEATHER_CODES = {
   73: {
     label: "Moderate Snow",
     description: "Steady snowfall.",
-    icon: "WiSnow",
+    icon: "snow",
     category: "snow",
     background: "Light snow.jpg"
   },
@@ -146,7 +146,7 @@ export const WEATHER_CODES = {
   75: {
     label: "Heavy Snow",
     description: "Heavy snowfall.",
-    icon: "WiSnow",
+    icon: "heavy_snow",
     category: "snow",
     background: "Heavy snowfall.jpg"
   },
@@ -154,7 +154,7 @@ export const WEATHER_CODES = {
   77: {
     label: "Snow Grains",
     description: "Small granular snow particles.",
-    icon: "WiSnow",
+    icon: "snow",
     category: "snow",
     background: "Heavy snowfall.jpg"
   },
@@ -162,7 +162,7 @@ export const WEATHER_CODES = {
   80: {
     label: "Light Rain Showers",
     description: "Passing light rain showers.",
-    icon: "WiShowers",
+    icon: "rain",
     category: "showers",
     background: "Light rain.jpg"
   },
@@ -170,7 +170,7 @@ export const WEATHER_CODES = {
   81: {
     label: "Moderate Rain Showers",
     description: "Frequent rain showers.",
-    icon: "WiShowers",
+    icon: "heavy_rain",
     category: "showers",
     background: "Heavy rain.jpg"
   },
@@ -178,7 +178,7 @@ export const WEATHER_CODES = {
   82: {
     label: "Violent Rain Showers",
     description: "Intense and heavy rain showers.",
-    icon: "WiShowers",
+    icon: "heavy_rain",
     category: "showers",
     background: "Heavy rain.jpg"
   },
@@ -186,7 +186,7 @@ export const WEATHER_CODES = {
   85: {
     label: "Light Snow Showers",
     description: "Passing light snow showers.",
-    icon: "WiSnowWind",
+    icon: "snow",
     category: "snow",
     background: "Light snow.jpg"
   },
@@ -194,7 +194,7 @@ export const WEATHER_CODES = {
   86: {
     label: "Heavy Snow Showers",
     description: "Intense snow showers.",
-    icon: "WiSnowWind",
+    icon: "heavy_snow",
     category: "snow",
     background: "Heavy snowfall.jpg"
   },
@@ -202,7 +202,7 @@ export const WEATHER_CODES = {
   95: {
     label: "Thunderstorm",
     description: "Thunderstorm without hail.",
-    icon: "WiThunderstorm",
+    icon: "thunderstorm",
     category: "thunderstorm",
     background: "Thunderstorm with lightning.jpg"
   },
@@ -210,7 +210,7 @@ export const WEATHER_CODES = {
   96: {
     label: "Thunderstorm with Light Hail",
     description: "Thunderstorm accompanied by light hail.",
-    icon: "WiStormShowers",
+    icon: "thunderstorm",
     category: "thunderstorm",
     background: "Thunderstorm with lightning.jpg"
   },
@@ -218,7 +218,7 @@ export const WEATHER_CODES = {
   99: {
     label: "Thunderstorm with Heavy Hail",
     description: "Severe thunderstorm accompanied by heavy hail.",
-    icon: "WiStormShowers",
+    icon: "thunderstorm",
     category: "thunderstorm",
     background: "Thunderstorm with lightning.jpg"
   }

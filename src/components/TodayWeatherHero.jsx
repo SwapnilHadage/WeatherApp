@@ -1,4 +1,3 @@
-import {getWeatherInfo, } from "../data/getWeatherFromCode"
 import {WEATHER_ICONS} from "../data/icons"
 import {TodayWeatherMiniCard } from "../components";
 import { TodayWeatherLoading } from "./WeatherLoading";
@@ -20,25 +19,31 @@ function TodayWeatherHero({data, error, loading, hasCoords}) {
       return <Error error={error}/>
     }
   }
+  
 
   return (
-    <div className="min-h-full flex flex-row flex-wrap size-full justify-center content-start items-start rounded-xl gap-4 p-3 min-w-full">
+        <div className="size-full flex items-center justify-center p-2 pb-4 ">
+          <div className="w-full rounded-xl gap-2 grid grid-cols-2 items-stretch
+          md:grid-cols-7 ">
         {
           data?.hourly?.weather_code.map((code, i)=>{
-            const weatherInfo = getWeatherInfo(code);
-            const Icon = WEATHER_ICONS[weatherInfo.icon];
-
-            return(
+            const hr = new Date(data.hourly.time[i]).getHours();
+            if(Number(hr) >= Number(new Date().getHours())){
+              
+              return(
               <TodayWeatherMiniCard
-              Icon = {Icon}
-              data = {data}
-              i={i}
-              key={i}
+                data = {data}
+                i={i}
+                key={i}
               />
             )
-
+            }else{
+              
+              return null;
+            }
           })
         }
+      </div>
     </div>
   )
 }

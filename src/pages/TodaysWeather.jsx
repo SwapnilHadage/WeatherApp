@@ -13,17 +13,15 @@ function TodaysWeather() {
       dispatch(todayWeather(coords));
     }
   },[coords, dispatch]);
-  useDispatch(()=>{
-    if (todaysWeatherData) {
-      console.log(todaysWeatherData);
-    }
-  },[todaysWeatherData])
+  // useEffect(()=>{
+  //   if (todaysWeatherData) {
+  //     console.log(todaysWeatherData);
+  //   }
+  // },[todaysWeatherData])
 
   return (
-    <div className="size-full min-h-0 flex flex-col bg-white overflow-hidden">
-      <Header2
-        msg = {"Today's Forecast"}
-      />
+    <div className="size-full min-h-0 flex flex-col overflow-hidden">
+      
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden scroll-smooth ">
         <TodayWeatherHero
         data = {todaysWeatherData}

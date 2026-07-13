@@ -102,7 +102,7 @@ const setup = createSlice({
     language: 'English',
     location: null,
     mode: 'working Professional',
-    theme:0,
+    theme:'light',
     coords : null,
     loading: false,
     error: null,
@@ -122,7 +122,10 @@ const setup = createSlice({
       state.language = action.payload;
     },
     changeTheme :(state,action)=>{
-      state.theme = !state.theme; //toggle
+      state.theme = state.theme==='dark' ? 'dark' : 'light' ; //toggle
+    },
+    setTheme :(state,action)=>{
+      state.theme = action.payload;
     },
   },
 
@@ -163,11 +166,7 @@ const setup = createSlice({
     .addCase(todayWeather.fulfilled, (state, action)=>{
       state.loading = false;
       state.error = null;
-      state.todaysWeatherData = action.payload;
-      console.log("success");
-      console.log(action.payload);
-      
-      
+      state.todaysWeatherData = action.payload;   
     })
     .addCase(todayWeather.rejected, (state, action)=>{
       state.loading = false;
@@ -263,6 +262,7 @@ export const {changeCoords,
               changeLanguage,
               changeMode,
               changeTheme,
+              setTheme,
             } = setup.actions;
 
 export default setup.reducer
