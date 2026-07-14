@@ -1,3 +1,4 @@
+import { Language } from "@google/genai";
 import { getWeatherAnalysis } from "../services/weatherService"
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -17,7 +18,7 @@ function AiAnalysis() {
       console.error("Weather Analysis Failed", error);
     }
   }
-  const { loading, error, currentWeatherData, todaysWeatherData, weekWeatherData, coords, } = useSelector(state=>state.setup);
+  const { loading, error, currentWeatherData, todaysWeatherData, weekWeatherData, coords, language, } = useSelector(state=>state.setup);
 
 
   useEffect(()=>{
@@ -27,7 +28,15 @@ function AiAnalysis() {
       currentWeatherData &&
       todaysWeatherData &&
       weekWeatherData){
-      getAnalysis();
+      getAnalysis({
+        role: 'general',
+        language: language,
+        weatherData: {
+          currentWeatherData : currentWeatherData,
+          todaysWeatherData : todaysWeatherData,
+          weekWeatherData : weekWeatherData,
+        }
+      });
     }
   },[
       currentWeatherData,
