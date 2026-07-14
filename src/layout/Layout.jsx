@@ -44,13 +44,13 @@ useEffect(() => {
 
     const handleScroll = ()=>{
       const isAtBottom = mainRef.scrollTop + mainRef.clientHeight >= mainRef.scrollHeight -2;
-      const isNearTop = mainRef.scrollTop +90 >= weekWeatherScrollRef.current.offsetTop ;
+      const isNearTop = mainRef.scrollTop + 100 >= weekWeatherScrollRef.current.offsetTop ;
       if(isAtBottom || isNearTop){
         setNav('weekWeather');
-      }else if(isTodayWeatherInView){
-        setNav('todayWeather');
       }else if(isCurrWeatherInView){
         setNav('currWeather');
+      }else if(isTodayWeatherInView){
+        setNav('todayWeather');
       }
     };
 
