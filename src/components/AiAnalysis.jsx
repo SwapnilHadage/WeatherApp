@@ -28,15 +28,16 @@ function AiAnalysis() {
       currentWeatherData &&
       todaysWeatherData &&
       weekWeatherData){
-      getAnalysis({
-        role: 'general',
-        language: language,
-        weatherData: {
-          currentWeatherData : currentWeatherData,
-          todaysWeatherData : todaysWeatherData,
-          weekWeatherData : weekWeatherData,
+        const data = {
+          role: 'general',
+          language: language,
+          weatherData: {
+            currentWeatherData : currentWeatherData,
+            todaysWeatherData : todaysWeatherData,
+            weekWeatherData : weekWeatherData,
         }
-      });
+        }
+      getAnalysis(data);
     }
   },[
       currentWeatherData,
