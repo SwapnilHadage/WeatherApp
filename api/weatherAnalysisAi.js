@@ -5,8 +5,10 @@ export default async function handler(req, res){
     return res.status(405).json({error: "Method not allowed"});
   }
 
-  const { data } = req?.body ?? {};
-  if( !data ){
+  const body = req?.body ?? {};
+  const { role, language, weatherData } =  body;
+
+  if( !role || !language || !weatherData ){
     return res.status(405).json({error: "No Weather data for Analysis"});
   }
   
@@ -19,8 +21,8 @@ export default async function handler(req, res){
     const prompt = `
           Role:You are an expert weather analyst whose speciality is converting weather data into practical, easy-to-understand advice for ordinary people.
           My Profile:
-          role: ${data.role}.
-          language: ${data.language}.
+          role: ${role}.
+          language: ${language}.
           
           your job/task: analyze the given data( current, hourly(today's) and daily(a Week's from today)) and provide a analysis for me according to my context( considering who i am) in general language, not in scientific language..do and generate the response such that a non-technical/non-scientific/no-weather-terminologies-knowledge guy gain the weather information without any need to search the things in the response in order to understand it..
 
@@ -75,7 +77,7 @@ export default async function handler(req, res){
 
           Your success is measured by whether the user can immediately understand the weather and confidently plan their day without looking at any other weather information.
           Weather data:
-          ${JSON.stringify(data.weatherData)}
+          ${JSON.stringify(weatherData)}
           `;
 
     const response = await ai.models.generateContent({

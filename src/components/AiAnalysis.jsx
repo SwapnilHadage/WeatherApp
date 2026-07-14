@@ -5,12 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 function AiAnalysis() {
-  const getAnalysis = async()=>{
-    const data = {
-      currentWeather: currentWeatherData,
-      todaysWeather: todaysWeatherData,
-      WeeksWeather: weekWeatherData
-    }
+  const getAnalysis = async(data)=>{
     try {
       const analysisData = await getWeatherAnalysis(data);
       console.log(analysisData);
@@ -28,16 +23,15 @@ function AiAnalysis() {
       currentWeatherData &&
       todaysWeatherData &&
       weekWeatherData){
-        const data = {
-          role: 'general',
-          language: language,
-          weatherData: {
-            currentWeatherData : currentWeatherData,
-            todaysWeatherData : todaysWeatherData,
-            weekWeatherData : weekWeatherData,
+      getAnalysis({
+        role: 'general',
+        language,
+        weatherData: {
+          currentWeatherData,
+          todaysWeatherData,
+          weekWeatherData,
         }
-        }
-      getAnalysis(data);
+      });
     }
   },[
       currentWeatherData,
