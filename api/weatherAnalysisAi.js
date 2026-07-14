@@ -47,9 +47,14 @@ export default async function handler(req, res){
             4. Weekly outlook
             Do not spend unnecessary space describing pleasant weather.
           16. If the user's role is "General" or "Default", do not personalize the analysis. Instead, provide practical weather insights and recommendations that are useful for the average person.
+          17. dont use any formattings like \n and others, i want plan text with proper grammar used iin each sentence
 
           expected response format:
-          Return plain text.
+          "answer: {
+          1: 'sentence 1',
+          2: 'sentence 2',
+          3: 'sentence 3',
+          }"
           Avoid long paragraphs.
           Use short paragraphs instead of bullet points..
           Do not use markdown tables.
