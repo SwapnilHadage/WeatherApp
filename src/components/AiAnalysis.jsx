@@ -33,7 +33,7 @@ function AiAnalysis() {
       return JSON.stringify(parsed, null, 2);
     }catch(e){
       setAiError(e.message);
-      return analysisData.answer;
+      return analysisData?.answer;
     }
   }
 
@@ -76,18 +76,20 @@ function AiAnalysis() {
     <div className="container">
       <div className="box">
         <div className="content">
-          {
-            res &&
-            Object.entries(res).map(([Key, value])=>{
-
-              return(
-                <p
+          <ul
+          className="flex flex-col items-start">
+            {
+              res &&
+              Object.entries(res).map(([Key, value])=>{
+                return(
+                <li
                 key={Key}>
                   {value}
-                </p>
+                </li>
               )
             })
           }
+          </ul>
         </div>
       </div>
     </div>
