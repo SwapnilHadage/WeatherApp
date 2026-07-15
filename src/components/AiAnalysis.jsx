@@ -76,7 +76,18 @@ function AiAnalysis() {
     <div className="container">
       <div className="box">
         <div className="content">
-            <h1>{res}</h1>
+          {
+            res &&
+            Object.entries(res).map(([Key, value])=>{
+
+              return(
+                <p
+                key={key}>
+                  {value}
+                </p>
+              )
+            })
+          }
         </div>
       </div>
     </div>
