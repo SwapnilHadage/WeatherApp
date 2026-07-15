@@ -90,9 +90,9 @@ function Header({openSidebar}) {
   
 
   return (
-    <header className='w-dvw max-h-max flex flex-col justify-evenly items-center gap-1' >
+    <header className='w-dvw max-h-max flex flex-col justify-evenly items-center gap-1 bg-gradient-to-b from-[#2363BE ] to-white/0' >
       <div className='w-full flex justify-between p-3 
-      bg-gradient-to-b from-[#2363BE ] to-white/0'>
+      '>
         {/*Name and LOGO*/}
         <div className='text-white'>
           VYOM

@@ -83,6 +83,7 @@ function CurrWeather() {
         <AiAnalysis data={currentWeatherData}/>
         </>
       }
+
     </div>
   )
 }

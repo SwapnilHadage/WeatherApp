@@ -2,9 +2,11 @@ import { Language } from "@google/genai";
 import { getWeatherAnalysis } from "../services/weatherService"
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import './ai.css';
 
 function AiAnalysis() {
+  const [res, setRes] = useState(null);
+  let debugFlag = false;
   const getAnalysis = async(data)=>{
     try {
       const analysisData = await getWeatherAnalysis(data);
@@ -12,18 +14,20 @@ function AiAnalysis() {
     } catch (error) {
       console.error("Weather Analysis Failed", error);
     }
+    debugFlag = true;
   }
   const { loading, error, currentWeatherData, todaysWeatherData, weekWeatherData, coords, language, } = useSelector(state=>state.setup);
 
 
   useEffect(()=>{
-    if(coords &&
+    if( !debugFlag &&
+      coords &&
       !error &&
       !loading &&
       currentWeatherData &&
       todaysWeatherData &&
       weekWeatherData){
-      getAnalysis({
+      const data = getAnalysis({
         role: 'general',
         language,
         weatherData: {
@@ -33,6 +37,8 @@ function AiAnalysis() {
         }
       });
     }
+
+    setRes(data);
   },[
       currentWeatherData,
       todaysWeatherData,
@@ -41,12 +47,19 @@ function AiAnalysis() {
   
   return (
     <div
-    className="bg-red-800 w-[100%] h-75"
-    >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore officia itaque accusantium ipsam ea natus libero possimus quod perferendis omnis doloremque nesciunt dignissimos, beatae eum quis quam? Ullam, maxime aliquid?
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate ab dignissimos vitae laudantium velit! Dolore ipsa recusanetur adipisicing elit. Voluptate ab dignissimos vitae laudantium velit! Dolore ipsa recusandae impedit illo? Quis quia rem repellendus q
+    className=" container
+    ">
+      <div className="box">
+        <div className="content"
+        >
+          <h1>
+            {res}
+          </h1>
+        </div>
+      </div>
     </div>
   )
 }
 
-export default AiAnalysis
+export default AiAnalysis;
+

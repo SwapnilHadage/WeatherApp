@@ -114,8 +114,36 @@ body {
     transparent,
     rgba(255, 255, 255, 0.3)
   );
+
+  
 }
 
+  .container{
+
+  }
+  .box::after{
+    content: "";
+    position: absolute;
+    inset: -3px;
+    background: conic-gradient(from
+    0deg, blue, rgb(146, 58, 58), blue);
+    z-index: -1;
+  }
+  .box:hover::after{
+    animation: border 3.5s linear infinite;
+  }
+  @property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+  @keyframes border {
+    from {
+      --angle: 0deg;
+    } to {
+      --angle: 360deg;
+    }
+  }
 
   .weather-card {
     @apply border transition-all duration-300;

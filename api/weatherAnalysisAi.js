@@ -50,7 +50,8 @@ export default async function handler(req, res){
           17. dont use any formattings like \n and others, i want plan text with proper grammar used iin each sentence
 
           expected response format:
-          JSON -
+          JSON.
+          structure of JSON: 
           answer: {
           1: 'sentence 1',
           2: 'sentence 2',
