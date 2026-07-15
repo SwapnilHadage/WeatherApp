@@ -20,6 +20,7 @@ function AiAnalysis() {
 
 
   useEffect(()=>{
+    let data = null;
     if( !debugFlag &&
       coords &&
       !error &&
@@ -27,7 +28,7 @@ function AiAnalysis() {
       currentWeatherData &&
       todaysWeatherData &&
       weekWeatherData){
-      const data = getAnalysis({
+       data = getAnalysis({
         role: 'general',
         language,
         weatherData: {
