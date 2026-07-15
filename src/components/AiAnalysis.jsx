@@ -63,6 +63,7 @@ function AiAnalysis() {
         }
       });
     }
+    console.log(data);
     
     setRes(data);
   },[
