@@ -28,7 +28,7 @@ function AiAnalysis() {
       currentWeatherData &&
       todaysWeatherData &&
       weekWeatherData){
-       data = getAnalysis({
+      data = getAnalysis({
         role: 'general',
         language,
         weatherData: {
@@ -38,7 +38,8 @@ function AiAnalysis() {
         }
       });
     }
-
+    console.log(typeof data);
+    
     setRes(data);
   },[
       currentWeatherData,
