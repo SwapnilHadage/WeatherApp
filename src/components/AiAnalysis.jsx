@@ -21,13 +21,14 @@ function AiAnalysis() {
 
   if(analysisData.answer){
     try{
-      let jsonString = analysisData;
+      let jsonString = analysisData.answer;
       if(jsonString.includes('```json')){
         jsonString = jsonString.replace(/```json\n?/g,'').replace(/```\n?/g,'')
       }
       const parsed = JSON.parse(jsonString);
       if(parsed.answer && typeof parsed?.answer==='object'){
-          return parsed.answer;
+        console.log(parsed.answer);
+        setRes(parsed.answer);
       }
       return JSON.stringify(parsed, null, 2);
     }catch(e){
@@ -39,21 +40,22 @@ function AiAnalysis() {
   return res?.text ||
     res?.message ||
     (typeof res === "string" ? res : JSON.stringify(res, null, 2));
-  
   }
 
 
   const { loading, error, currentWeatherData, todaysWeatherData, weekWeatherData, coords, language, } = useSelector(state=>state.setup);
   useEffect( ()=>{
-    let data = null;
+
     if( !debugFlag.current &&
       coords &&
       !error &&
       !loading &&
       currentWeatherData &&
       todaysWeatherData &&
-      weekWeatherData){
-      data = getAnalysis({
+      weekWeatherData
+      ){
+
+      getAnalysis({
         role: 'general',
         language,
         weatherData: {
@@ -63,9 +65,7 @@ function AiAnalysis() {
         }
       });
     }
-    console.log(data);
-    
-    setRes(data);
+
   },[
       currentWeatherData,
       todaysWeatherData,
