@@ -38,7 +38,7 @@ function AiAnalysis() {
         }
       });
     }
-    console.log(typeof data);
+    console.log(Object.entries(data));
     
     setRes(data);
   },[
