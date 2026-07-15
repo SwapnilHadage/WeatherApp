@@ -6,6 +6,7 @@ import './ai.css';
 
 function AiAnalysis() {
   const [res, setRes] = useState(null);
+  const [aiError, setAiError] = useState(null);
   let debugFlag = useRef(false);
 
   const getAnalysis = async(data)=>{
