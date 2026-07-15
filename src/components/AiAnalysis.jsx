@@ -82,7 +82,7 @@ function AiAnalysis() {
 
               return(
                 <p
-                key={key}>
+                key={Key}>
                   {value}
                 </p>
               )
