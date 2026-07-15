@@ -19,7 +19,7 @@ function AiAnalysis() {
     }
   debugFlag.current = true;
 
-  if(analysisData.answer){
+  if(analysisData?.answer){
     try{
       let jsonString = analysisData.answer;
       if(jsonString.includes('```json')){
@@ -77,7 +77,7 @@ function AiAnalysis() {
       <div className="box">
         <div className="content">
           <ul
-          className="flex flex-col items-start">
+          className="flex flex-col items-start gap-[2px] overflow-x-hidden overflow-y-auto scrollbar-none p-2 ">
             {
               res &&
               Object.entries(res).map(([Key, value])=>{

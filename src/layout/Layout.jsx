@@ -16,6 +16,13 @@ function Layout() {
     window.matchMedia("(prefers-color-scheme: dark)").matches
   );
   const dispatch = useDispatch();
+  const openSidebar = ()=> setSidebar(true);
+  const closeSidebar = ()=> setSidebar(false);
+
+  const currWeatherScrollRef = useRef(null);
+  const todayWeatherScrollRef = useRef(null);
+  const weekWeatherScrollRef = useRef(null);
+
 
 useEffect(() => {
   dispatch(setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light'));
@@ -40,11 +47,10 @@ useEffect(() => {
   });
 
   useEffect(()=>{
-    if(!mainRef) return;
-
+    if(!mainRef || !weekWeatherScrollRef) return;
     const handleScroll = ()=>{
       const isAtBottom = mainRef.scrollTop + mainRef.clientHeight >= mainRef.scrollHeight -2;
-      const isNearTop = mainRef.scrollTop + 100 >= weekWeatherScrollRef.current.offsetTop ;
+      const isNearTop = mainRef.scrollTop + 100 >= weekWeatherScrollRef?.current?.offsetTop ;
       if(isAtBottom || isNearTop){
         setNav('weekWeather');
       }else if(isCurrWeatherInView){
@@ -53,23 +59,12 @@ useEffect(() => {
         setNav('todayWeather');
       }
     };
-
     mainRef.addEventListener("scroll", handleScroll);
-
     handleScroll();
-
     return ()=>{
       mainRef.removeEventListener("scroll", handleScroll);
     }
-
   },[isTodayWeatherInView, isCurrWeatherInView, mainRef]);
-
-  const openSidebar = ()=> setSidebar(true);
-  const closeSidebar = ()=> setSidebar(false);
-
-  const currWeatherScrollRef = useRef(null);
-  const todayWeatherScrollRef = useRef(null);
-  const weekWeatherScrollRef = useRef(null);
 
   function scrollIntoView(div){
     
