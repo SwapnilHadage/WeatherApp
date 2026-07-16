@@ -1,13 +1,27 @@
-import { Language } from "@google/genai";
 import { getWeatherAnalysis } from "../services/weatherService"
 import { useEffect, useState, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 
 function AiAnalysis() {
   const [res, setRes] = useState(null);
   const [aiError, setAiError] = useState(null);
-  let debugFlag = useRef(false);
+  const debugFlag = useRef(false);
+
+  const normalizeAnswer = (answer) => {
+    if (typeof answer === "string") {
+      const trimmed = answer.trim();
+      if (trimmed.startsWith("{") || trimmed.startsWith("[")) {
+        try {
+          return JSON.parse(trimmed);
+        } catch {
+          return trimmed;
+        }
+      }
+      return trimmed;
+    }
+    return answer;
+  };
 
   const getAnalysis = async(data)=>{
     let analysisData = null;
@@ -16,30 +30,43 @@ function AiAnalysis() {
       console.log(analysisData);
     } catch (error) {
       console.error("Weather Analysis Failed", error);
+      setAiError(error.message || "Weather analysis failed");
+      return;
     }
-  debugFlag.current = true;
+    debugFlag.current = true;
 
-  if(analysisData?.answer){
-    try{
-      let jsonString = analysisData.answer;
-      if(jsonString.includes('```json')){
-        jsonString = jsonString.replace(/```json\n?/g,'').replace(/```\n?/g,'')
+    if (analysisData?.answer) {
+      try {
+        let jsonString = analysisData.answer;
+        if (typeof jsonString === "string" && jsonString.includes('```json')) {
+          jsonString = jsonString.replace(/```json\n?/g,'').replace(/```\n?/g,'');
+        }
+
+        let parsed = null;
+        if (typeof jsonString === "string") {
+          try {
+            parsed = JSON.parse(jsonString);
+          } catch {
+            parsed = null;
+          }
+        }
+
+        if (parsed) {
+          const answerValue = parsed.answer ?? parsed;
+          setRes(normalizeAnswer(answerValue));
+          return JSON.stringify(parsed, null, 2);
+        }
+
+        setRes(normalizeAnswer(jsonString));
+        return jsonString;
+      } catch (e) {
+        setAiError(e.message);
+        setRes(analysisData.answer);
+        return analysisData.answer;
       }
-      const parsed = JSON.parse(jsonString);
-      if(parsed.answer && typeof parsed?.answer==='object'){
-        console.log(parsed.answer);
-        setRes(parsed.answer);
-      }
-      return JSON.stringify(parsed, null, 2);
-    }catch(e){
-      setAiError(e.message);
-      return analysisData?.answer;
     }
-  }
 
-  return res?.text ||
-    res?.message ||
-    (typeof res === "string" ? res : JSON.stringify(res, null, 2));
+    setAiError("No answer returned from weather analysis");
   }
 
 

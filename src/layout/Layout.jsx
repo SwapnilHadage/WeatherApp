@@ -110,7 +110,7 @@ useEffect(() => {
         ref={setMainRef}>
           {
             error ? <ErrorPage error={error}/> :
-            <div className='w-full flex flex-col gap-6 
+            <div className='w-full flex flex-col gap-6
             '>
               <div ref={(element) => {
                   currWeatherRef(element);
