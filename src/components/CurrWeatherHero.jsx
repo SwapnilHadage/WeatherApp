@@ -34,7 +34,7 @@ function CurrWeatherHero({data, loading, error, hasCoords}) {
   
 
   return (
-    <div className={`w-full  h-75 rounded-2xl bg-${imgUrl ? `[url(${imgUrl})]` : 'gray-100'} flex flex-col gap-0  bg-cover bg-center bg-no-repeat text-white brightness-98
+    <div className={`w-full  h-[300px] rounded-2xl bg-${imgUrl ? `[url(${imgUrl})]` : 'gray-100'} flex flex-col gap-0  bg-cover bg-center bg-no-repeat text-white brightness-98
     md:w-auto
     md:min-w-[40%] 
     `}

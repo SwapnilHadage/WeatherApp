@@ -103,7 +103,7 @@ function AiAnalysis() {
     <>
     {
       res &&
-      <div className={`h-75 container w-full md:w-[40%] overflow-hidden`}>
+      <div className={`h-[300px]  container w-full md:w-[40%] overflow-hidden`}>
         <div className="box">
           <div className="content overflow-x-hidden overflow-y-auto scrollbar-none">
             <ul
