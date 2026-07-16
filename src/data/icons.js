@@ -30,6 +30,7 @@ import { AiOutlineRollback } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClear } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
+import { IoIosArrowBack } from "react-icons/io";
 
 
 export const WEATHER_ICONS = {
@@ -66,7 +67,7 @@ export {
   GiHamburgerMenu,
   MdClear,
   FaLocationDot,
-
+  IoIosArrowBack,
 
   
 };

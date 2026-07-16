@@ -42,7 +42,7 @@ function CurrWeather() {
         currentWeatherData &&
         <>
           <div
-          className='flex-1 relative flex shrink-0 gap-3
+          className='flex-1 relative flex gap-3 w-full
           md:items-start'>
             <CurrWeatherHero
               data = {currentWeatherData}

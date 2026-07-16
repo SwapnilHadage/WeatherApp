@@ -90,11 +90,11 @@ function Header({openSidebar}) {
   
 
   return (
-    <header className='w-dvw max-h-max flex flex-col justify-evenly items-center gap-1 bg-gradient-to-b from-[#2363BE ] to-white/0' >
-      <div className='w-full flex justify-between p-3 
+    <header className='w-dvw h-fit flex flex-col justify-evenly items-center gap-1 bg-gradient-to-b from-[#2363BE ] to-white/0 pb-1 box-shadow-only' >
+      <div className='w-full flex justify-between px-3 py-1
       '>
         {/*Name and LOGO*/}
-        <div className='text-white'>
+        <div className='text-white p-1'>
           VYOM
         </div>
 
@@ -102,14 +102,16 @@ function Header({openSidebar}) {
         <div
         className='flex justify-center items-center text-white'
         onClick={openSidebar}>
-          <GiHamburgerMenu
-          size={25}/>
+          <button
+          className='hover:backdrop-brightness-130 p-1 rounded'>
+            About
+          </button>
         </div>
       </div>
 
-      <div className='w-full h-auto flex items-center justify-between gap-2 px-2 bg-transparent'>
+      <div className='w-full h-auto flex items-center justify-between gap-2 px-2 bg-transparent '>
         {/*location*/}
-        <div className='w-full h-10 min-w-0 h-10 flex justify-end items-center overflow-hidden flex-nowrap bg-white text-black rounded-2xl'>
+        <div className='w-full h-10 min-w-0 h-10 flex justify-end items-center overflow-hidden flex-nowrap bg-white text-black rounded-2xl hover:bg-[#eff5fd]'>
           <input type="text"
           placeholder='Enter Location or Pincode'
           value={location===0? '' : location}
@@ -141,6 +143,7 @@ function Header({openSidebar}) {
 
         {/*Current Location btn*/}
         <div className={`w-fit h-10 bg-primary text-white hover:bg-primary-hover transition-all duration-200 cursor-pointer shrink-0 border-1 border-gray-300 p-2 overflow-hidden flex items-center rounded-2xl
+        hover:backdrop-brightness-130 
           `}
           onClick={getCurrentLocation}>
           <FaLocationDot />

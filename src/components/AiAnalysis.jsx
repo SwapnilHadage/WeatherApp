@@ -2,7 +2,7 @@ import { Language } from "@google/genai";
 import { getWeatherAnalysis } from "../services/weatherService"
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import './ai.css';
+
 
 function AiAnalysis() {
   const [res, setRes] = useState(null);
@@ -73,26 +73,31 @@ function AiAnalysis() {
     ]);
 
   return (
-    <div className="container">
-      <div className="box">
-        <div className="content">
-          <ul
-          className="flex flex-col items-start gap-[2px] overflow-x-hidden overflow-y-auto scrollbar-none p-2 ">
-            {
-              res &&
-              Object.entries(res).map(([Key, value])=>{
-                return(
-                <li
-                key={Key}>
-                  {value}
-                </li>
-              )
-            })
-          }
-          </ul>
+    <>
+    {
+      res &&
+      <div className={`container w-full md:w-[40%]`}>
+        <div className="box">
+          <div className="content">
+            <ul
+            className="flex flex-col items-start gap-[2px] overflow-x-hidden overflow-y-auto scrollbar-none p-2 ">
+              {
+                res &&
+                Object.entries(res).map(([Key, value])=>{
+                  return(
+                  <li
+                  key={Key}>
+                    {value}
+                  </li>
+                )
+              })
+            }
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    }
+    </>
   )
 }
 

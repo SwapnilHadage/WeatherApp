@@ -28,3 +28,15 @@
 .weather-icon.large{
     width:128px;
 }
+
+.weather-icon.small{
+    width:32px;
+}
+
+.weather-icon.medium{
+    width:64px;
+}
+
+.weather-icon.large{
+    width:128px;
+}

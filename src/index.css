@@ -118,20 +118,75 @@ body {
   
 }
 
+.box-show-only{
+  box-shadow: 0 8px 60px -6px rgb(29, 75, 182);
+}
+
   .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 100px;
+    border-radius: 16px;
+    background: transparent;
+  }
+  .box{
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    margin: 20px;
+    background:transparent;
+    border-radius: inherit;
 
   }
+  .box .content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #ddd;
+    padding: 20px;
+    text-align: center;
+  }
+  .box .glass{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    display: block;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+  .box::before,
   .box::after{
     content: "";
     position: absolute;
     inset: -3px;
-    background: conic-gradient(from
-    0deg, blue, rgb(146, 58, 58), blue);
     z-index: -1;
+    padding: 1px;
+    border-radius: inherit;
+    background: conic-gradient(from var(--angle), #02265e, #206de9, #5d97f3,  transparent, #5d97f3, #206de9, #02265e);
+    animation: border 3.5s linear infinite, blur-effect 3.5s linear infinite;
   }
+
+
+  .box:hover::before,
   .box:hover::after{
-    animation: border 3.5s linear infinite;
+    animation: border 3.5s linear infinite, blur-effect 3.5s linear infinite;
   }
+  .content {
+  position: relative;
+  z-index: 1;
+  background: #060c21;
+  border-radius: inherit;
+}
+
   @property --angle{
     syntax: "<angle>";
     initial-value: 0deg;
@@ -139,11 +194,20 @@ body {
   }
   @keyframes border {
     from {
-      --angle: 0deg;
+      --angle: 53deg;
     } to {
-      --angle: 360deg;
+      --angle: 413deg;
     }
   }
+  @keyframes blur-effect {
+    from {
+      filter: blur(10px);
+    } to {
+      filter: blur(5px);
+    }
+  }
+
+
 
   .weather-card {
     @apply border transition-all duration-300;

@@ -119,14 +119,14 @@ useEffect(() => {
               >
                 <CurrWeather />
               </div>
-              <hr />
+              <hr className='border-[#1d4bb6] border-1 rounded-2xl'/>
               <div ref={(element) => {
                   todayWeatherRef(element);
                   todayWeatherScrollRef.current = element;
                 }}>
                 <TodaysWeather />
               </div>
-              <hr />
+              <hr className='border-[#1d4bb6] border-1 rounded-2xl'/>
               
               <div ref={(element) => {
                   weekWeatherScrollRef.current = element;

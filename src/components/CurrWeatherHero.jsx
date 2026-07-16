@@ -35,6 +35,7 @@ function CurrWeatherHero({data, loading, error, hasCoords}) {
 
   return (
     <div className={`w-full  h-75 rounded-2xl bg-${imgUrl ? `[url(${imgUrl})]` : 'gray-100'} flex flex-col gap-0  bg-cover bg-center bg-no-repeat text-white brightness-98
+    md:w-auto
     md:min-w-[40%] 
     `}
     style={{backgroundImage: imgUrl ? `url("${imgUrl}")` : undefined }}>
@@ -45,13 +46,11 @@ function CurrWeatherHero({data, loading, error, hasCoords}) {
       </div>
       {/*Temp and icon*/}
       <div className="w-full h-[70%] flex flex-start items-center relative px-1 ">
-        <div className='w-fit text-8xl font-mono h-full flex items-center
+        <div className='w-fit text-8xl font-mono h-full flex relative items-center
         md:text-9xl'>
           <p>{Math.round(data.current.temperature_2m)}</p>
-        </div>
-        <div className='w-min h-full flex flex-start transparent max-w-fit max-h-fit absolute right-15
-        md:right-50'>
-          <WiDegrees className=' bg-tranparent size-40 text-7xl text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]
+          <WiDegrees className='absolute bg-tranparent size-40 text-7xl text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]
+          m-10
           md:size-60'/>
         </div>
         
@@ -64,7 +63,7 @@ function CurrWeatherHero({data, loading, error, hasCoords}) {
           size = {550}
           isDay={data.current.isDay}
           className=' bg-tranparent relative right-0 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]
-          md:right-0
+          md:right-[-30px]
           md:size-60'/>
           }
         </div>
