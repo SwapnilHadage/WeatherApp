@@ -152,6 +152,17 @@ body {
     padding: 20px;
     text-align: center;
   }
+  .box .glass{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    display: block;
+    pointer-events: none;
+    border-radius: inherit;
+  }
   .box::before,
   .box::after{
     content: "";
@@ -159,7 +170,6 @@ body {
     inset: -3px;
     z-index: -1;
     padding: 1px;
-    filter: blur(20px);
     border-radius: inherit;
     background: conic-gradient(from var(--angle), #02265e, #206de9, #5d97f3,  transparent, #5d97f3, #206de9, #02265e);
     animation: border 3.5s linear infinite;
@@ -168,7 +178,7 @@ body {
 
   .box:hover::before,
   .box:hover::after{
-    animation: border 3.5s linear infinite;
+    animation: border 3.5s linear infinite, blur-effect 3.5s linear infinite;
   }
   .content {
   position: relative;
@@ -187,6 +197,13 @@ body {
       --angle: 53deg;
     } to {
       --angle: 413deg;
+    }
+  }
+@keyframes blur-effect {
+    from {
+      filter: blur(10px);
+    } to {
+      filter: blur(10px);
     }
   }  
 
