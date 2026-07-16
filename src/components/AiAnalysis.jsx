@@ -103,11 +103,11 @@ function AiAnalysis() {
     <>
     {
       res &&
-      <div className={`container w-full md:w-[40%]`}>
+      <div className={`h-75 container w-full md:w-[40%] overflow-x-hidden overflow-y-auto scrollbar-none`}>
         <div className="box">
           <div className="content">
             <ul
-            className="flex flex-col items-start gap-[2px] overflow-x-hidden overflow-y-auto scrollbar-none p-2 ">
+            className="flex flex-col items-start gap-[2px] p-2 ">
               {
                 res &&
                 Object.entries(res).map(([Key, value])=>{
