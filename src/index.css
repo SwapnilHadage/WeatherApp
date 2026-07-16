@@ -172,13 +172,13 @@ body {
     padding: 1px;
     border-radius: inherit;
     background: conic-gradient(from var(--angle), #02265e, #206de9, #5d97f3,  transparent, #5d97f3, #206de9, #02265e);
-    animation: border 3.5s linear infinite, blur-effect 3.5s linear infinite;
+    animation: border 3.5s linear infinite;
   }
 
 
   .box:hover::before,
   .box:hover::after{
-    animation: border 3.5s linear infinite, blur-effect 3.5s linear infinite;
+    animation: border 3.5s linear infinite;
   }
   .content {
   position: relative;
@@ -198,14 +198,7 @@ body {
     } to {
       --angle: 413deg;
     }
-  }
-  @keyframes blur-effect {
-    from {
-      filter: blur(10px);
-    } to {
-      filter: blur(5px);
-    }
-  }
+  }  
 
 
 
