@@ -104,8 +104,8 @@ function AiAnalysis() {
     {
       res &&
       <div className={`h-[300px]  container w-full md:w-[40%] overflow-hidden`}>
-        <div className="box">
-          <div className="content overflow-x-hidden overflow-y-auto scrollbar-none">
+        <div className="box w-full h-full min-h-0 ">
+          <div className="content w-full h-full min-h-0 overflow-x-hidden overflow-y-auto scrollbar-none">
             <ul
             className="flex flex-col items-start gap-[2px] p-2 ">
               {
